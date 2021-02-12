@@ -1,0 +1,46 @@
+# port of HTTP
+port: 7890
+
+# port of SOCKS5
+socks-port: 7891
+
+# redir port for Linux and macOS
+# redir-port: 7892
+
+allow-lan: false
+
+# Only applicable when setting allow-lan to true
+# "*": bind all IP addresses
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+# bind-address: "*"
+
+# Rule / Global / Direct (default is Rule)
+mode: Rule
+
+# set log level to stdout (default is info)
+# info / warning / error / debug / silent
+log-level: info
+
+# RESTful API for clash
+external-controller: 127.0.0.1:9090
+
+# you can put the static web resource (such as clash-dashboard) to a directory, and clash would serve in `${API}/ui`
+# input is a relative path to the configuration directory or an absolute path
+# external-ui: folder
+
+# Secret for RESTful API (Optional)
+# secret: ""
+proxies:
+  - name: "N3RO · 🇭🇰 专线 深圳 → 香港 01"
+    server: 120.25.233.2
+    port: 31999
+    type: ss, cipher: rc4-md5
+    password: h4yx32i1d8c
+proxy-groups:
+  - name: "Proxy"
+    type: select
+    proxies:
+      - N3RO · 🇭🇰 专线 深圳 → 香港 01
+rules:
+  - IP-CIDR,192.168.0.106/24,Proxy

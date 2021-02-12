@@ -1,0 +1,20 @@
+# 【tips】这是 YouTube 规则和 YouTube Music 规则一起合并在一个策略组的。
+
+# > YouTubeMusic 单独规则
+user-agent, YouTubeMusic*, YouTube & YT Music
+user-agent, com.google.ios.youtubemusic*, YouTube & YT Music
+
+# > YouTube 单独规则
+USER-AGENT,com.google.ios.youtube*, YouTube & YT Music
+USER-AGENT,YouTube*, YouTube & YT Music
+
+# 【注意⚠️】1.YouTube 和 YouTube Music 两个 app 都共用着【DOMAIN-SUFFIX,googlevideo.com】，【DOMAIN-SUFFIX,youtube.com 】，【DOMAIN,youtubei.googleapis.com】这三个规则。
+# 2.除了要加上上面四个规则外，还必须加上如下的三个共用规则 【googlevideo.com】，【youtube.com】，【youtubei.googleapis.com】，否则 YouTubeMusic app 使用时就走 ForeignMedia 策略组了，因为 ForeignMedia 策略组也添加了该规则，这样 YouTube & YT Music 策略组就没有效果了，所以只有在这里写了该规则后，YouTube & YT Music 策略组才有效果 。因为 YouTube 和 YouTube Music 两个 app 都要使用 三个共用的规则，如果两个策略组都有一样的规则，当匹配该规则时，只会走这里写的策略组 YouTube & YT Music，所以只能选择一个策略组添加这个规则，我选择在 YouTube & YT Music 策略组添加三个共用规则，所以就不单独使用 YouTube 策略组了，反之在 YouTube 策略组添加三个共用规则也是同理。
+# 3.注意：【GOOGLEVIDEO.COM】和 【youtube.com】 ，这两个规则让 YouTube 和 YouTube Music 两个 app 能播放视频和播放音乐，该规则在 FOREIGNMEDIA 策略组里也添加了。
+# 4.必须要有三个共用的规则，YouTube 和 YouTube Music 两个 app 才能正常使用。
+# 5.由以上的1234四点，所以我直接把三个共用规则和 YouTube 规则和 YouTube Music 规则一起合并在一个策略组 YouTube & YouTube Music 里了，如果三个共用规则添加在 foreignmedia 策略组和 YouTube 策略组就会很麻烦，因为
+# 6.让一些节流量走 youtubei.googleapis.com 规则才能让 YouTube Music app 里的歌能播放，否则 app 里的歌都不能播放，至于是那些节点，需要自己测试。
+# > YouTube 和 YouTube Music 共用的三个规则
+DOMAIN-SUFFIX,googlevideo.com, YouTube & YT Music
+DOMAIN-SUFFIX,youtube.com, YouTube & YT Music
+DOMAIN,youtubei.googleapis.com, YouTube & YT Music

@@ -1,0 +1,55 @@
+# 【注意现在修改为 启动 TUN 模式了，不使用 TAP 模式】 Clash_base.yml 是添加了启动 TAP 模式的 Clash 基础配置
+# gist 编辑后会有延迟，可能要稍等。或者试着重新编辑后使用 gist
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+dns:
+  enable: true
+  # 或 redir-host
+  # enhanced-mode: fake-ip
+  enhanced-mode: redir-host
+  # 0.9.11 版本 不能使用 listen: 127.0.0.1:53，0.9.1 版本使用 127.0.0.1:53 TAP 可以连接
+  listen: 0.0.0.0:53
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+# experimental:
+# interface-name: WLAN # 出口网卡名称，或者使用下方的自动检测
+
+# 启动 TUN 模式
+tun:
+  enable: true
+  stack: gvisor
+  dns-hijack:
+    - 198.18.0.2:53
+  macOS-auto-route: true
+  macOS-auto-detect-interface: true # 自动检测出口网卡
+cfw-bypass:
+  - qq.com
+  - music.163.com
+  - "*.music.126.net"
+  - localhost
+  - 127.*
+  - 10.*
+  - 172.16.*
+  - 172.17.*
+  - 172.18.*
+  - 172.19.*
+  - 172.20.*
+  - 172.21.*
+  - 172.22.*
+  - 172.23.*
+  - 172.24.*
+  - 172.25.*
+  - 172.26.*
+  - 172.27.*
+  - 172.28.*
+  - 172.29.*
+  - 172.30.*
+  - 172.31.*
+  - 192.168.*
+  - <local>
+cfw-latency-timeout: 5000

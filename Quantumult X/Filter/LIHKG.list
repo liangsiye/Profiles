@@ -1,0 +1,6 @@
+# > LIHKG
+HOST-SUFFIX, LIHKG.COM, LIHKG
+# 打开帖子时显示图片要请求的图片地址
+HOST-SUFFIX, i.lih.kg, LIHKG
+# 点击图片请求的地址
+HOST-SUFFIX, na.cx, LIHKG

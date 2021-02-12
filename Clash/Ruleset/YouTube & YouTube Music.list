@@ -1,0 +1,5 @@
+# 【tips】这是 YouTube 和 YouTube Music 一起使用同一个策略组的。
+# > YouTube 和 YouTube Music 共用的三个规则
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN,youtubei.googleapis.com

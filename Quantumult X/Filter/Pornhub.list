@@ -1,0 +1,6 @@
+# > Pornhub
+DOMAIN-SUFFIX,phncdn.com,Pornhub
+DOMAIN-SUFFIX,pornhub.com,Pornhub
+DOMAIN-SUFFIX,pornhubpremium.com,Pornhub
+# > 自己添加的，会走该规则，当该规则走一些节点时可能导致播放视频时提示不能播放，所以放在一起
+DOMAIN-SUFFIX,phprcdn.com,Pornhub
