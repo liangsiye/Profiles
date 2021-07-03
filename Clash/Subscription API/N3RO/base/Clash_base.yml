@@ -25,8 +25,8 @@ tun:
   stack: gvisor
   dns-hijack:
     - 198.18.0.2:53
-  macOS-auto-route: true
-  macOS-auto-detect-interface: true # 自动检测出口网卡
+  auto-route: true
+  auto-detect-interface: true # 自动检测出口网卡
 cfw-bypass:
   - qq.com
   - music.163.com
